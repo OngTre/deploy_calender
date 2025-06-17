@@ -37,6 +37,7 @@ public class SecuirityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/register", "/auth/login", "/public/**", "/css/**", "/js/**", "/").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority("ADMIN")
+                        .anyRequest().permitAll())
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
